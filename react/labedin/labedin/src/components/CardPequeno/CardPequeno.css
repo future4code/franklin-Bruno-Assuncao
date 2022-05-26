@@ -1,0 +1,29 @@
+.litlecard-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.litlecard-container > img {
+    width: 70px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.litlecard-container h4 {
+    margin-bottom: 15px;
+}
+
+.litlecard-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
+
+.litlecard-container > img {
+    width: 30px;
+    margin-right: 10px;
+}
