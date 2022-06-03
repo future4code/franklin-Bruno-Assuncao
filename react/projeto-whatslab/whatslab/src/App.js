@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  const [mensagem, setMensagem] = useState ([
+
+  ]);
+  const [inputPessoa, setInputPessoa] = useState("");
+  const [inputMensagem, setInputMensagem] = useState("");
+
+  const adicionaMensagem = () => {
+    const novaMensagem = {
+      nome: inputPessoa,
+      mensagem: inputMensagem
+    };
+
+    const novasMensagens = [...mensagem, novaMensagem];
+
+    setMensagem(novasMensagens);
+  };
+
+  const onChangeInputPessoa = (event) => {
+    setInputPessoa(event.target.value);
+  };
+
+  const onChangeInputMensagem = (event) => {
+    setInputMensagem(event.target.value);
+  };
+
+  const listaDeMensagens = mensagem.map((envio) => {
+    return (
+      <p>
+        {envio.nome} : {envio.mensagem}
+      </p>
+    );
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        {listaDeMensagens}
+      </div>
+      <input
+          value={inputPessoa}
+          onChange={onChangeInputPessoa}
+          placeholder={"Nome"}
+        />
+        <input
+          value={inputMensagem}
+          onChange={onChangeInputMensagem}
+          placeholder={"Mensagem"}
+        />
+        <button onClick={adicionaMensagem}>Enviar</button>
     </div>
   );
 }
