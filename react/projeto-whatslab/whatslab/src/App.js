@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import './App.css';
 
 function App() {
   const [mensagem, setMensagem] = useState ([
-
   ]);
+
   const [inputPessoa, setInputPessoa] = useState("");
   const [inputMensagem, setInputMensagem] = useState("");
 
@@ -16,6 +17,9 @@ function App() {
     const novasMensagens = [...mensagem, novaMensagem];
 
     setMensagem(novasMensagens);
+
+    setInputPessoa ('')
+    setInputMensagem ('')
   };
 
   const onChangeInputPessoa = (event) => {
@@ -35,21 +39,23 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="container">
       <div>
         {listaDeMensagens}
       </div>
-      <input
-          value={inputPessoa}
-          onChange={onChangeInputPessoa}
-          placeholder={"Nome"}
-        />
-        <input
-          value={inputMensagem}
-          onChange={onChangeInputMensagem}
-          placeholder={"Mensagem"}
-        />
-        <button onClick={adicionaMensagem}>Enviar</button>
+      <div className='input'>
+        <input className="inputPessoa"
+            value={inputPessoa}
+            onChange={onChangeInputPessoa}
+            placeholder={"Nome"}
+          />
+          <input className="inputMensagem"
+            value={inputMensagem}
+            onChange={onChangeInputMensagem}
+            placeholder={"Mensagem"}
+          />
+          <button onClick={adicionaMensagem}>Enviar</button>
+        </div>
     </div>
   );
 }
