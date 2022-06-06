@@ -1,0 +1,27 @@
+.inputPessoa {
+  width: 15%; 
+}
+
+.inputMensagem {
+  width: 70%;
+}
+
+.input {
+  text-align: center;
+  text-align: end;
+}
+
+button {
+  width:12%;
+}
+
+
+.container {
+  display: flexbox;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid;
+  width: 50%;
+  margin: auto;
+  padding-block-start: 500px;
+}
