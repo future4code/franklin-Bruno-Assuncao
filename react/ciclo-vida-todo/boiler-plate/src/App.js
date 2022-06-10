@@ -19,38 +19,54 @@ const InputsContainer = styled.div`
 `
 
 function App() {
-  const [tarefas, setTarefa] = useState([]);
+  const [tarefas, setTarefa] = useState([{
+    id: Date.now(),
+    texto: 'Texto da primeira tarefa',
+    completa: false // Indica se a tarefa está completa (true ou false)
+  },
+  {
+    id: Math.random(), // Explicação abaixo
+    texto: 'Texto da segunda tarefa',
+    completa: true // Indica se a tarefa está completa (true ou false)
+  }]);
   const [inputValue, setInputValue] = useState("");
-  const [filtro, setFiltro] = useState("")
+  const [filtro, setFiltro] = useState("nenhum")
     
-  useEffect() => {
-    () => {
+  // useEffect() => {
+  //   () => {
 
-    },
-    []
-  };
+  //   },
+  //   []
+  // };
 
-  useEffect() => {
-    () => {
+  // useEffect() => {
+  //   () => {
 
-    },
-    []
-  };
+  //   },
+  //   []
+  // };
 
-  onChangeInput = (event) => {
+  const onChangeInput = (event) => {
+    setInputValue(event.target.value)
+  }
+
+  const criaTarefa = () => {
+    const novaTarefa = {
+      id: Date.now(),
+      texto: inputValue,
+      completa: false
+    }
+    const listaTarefas = [...tarefas, novaTarefa]
+
+    setTarefa({tarefas: listaTarefas})
+  }
+
+  const selectTarefa = (id) => {
 
   }
 
-  criaTarefa = () => {
-
-  }
-
-  selectTarefa = (id) => {
-
-  }
-
-  onChangeFilter = (event) => {
-
+  const onChangeFilter = (event) => {
+    setFiltro(event.target.value)
   }
 
  
