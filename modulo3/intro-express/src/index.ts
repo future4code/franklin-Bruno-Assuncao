@@ -1,93 +1,96 @@
-import express from "express"
-import cors from "cors"
-import { users } from "./data"
+import express from "express";
+import cors from "cors";
+import { users } from "./data";
 
-const app = express()
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
-app.listen(3003, () => console.log("Servidor disponível em 3003"))
+app.get("/", (req, res) => {
+  res.status(200).send("Hello from Express");
+});
 
-app.get("/playlists", (req, res) => {
+app.listen(3003, () => console.log("Servidor rodando em 3003"));
+
+app.get("/users", (req, res) => {
   // tenho todos os usuários
   const currentUsers = users // array de objetos
   console.log(1, currentUsers);
-
-  // Vou pegar as playlists de cada usuário
-  const userPlaylists = currentUsers.map((user: any) => {
-    return user.playlists 
-  }) // array de arrays
-  console.log(2, userPlaylists)
-
-  const result = userPlaylists.flat(1)
-
-  res.status(200).send(result);
 })
+//   // Vou pegar as playlists de cada usuário
+//   const userPlaylists = currentUsers.map((user: any) => {
+//     return user.playlists
+//   }) // array de arrays
+//   console.log(2, userPlaylists)
 
+//   const result = userPlaylists.flat(1)
 
-app.get("/tracks", (req, res) => {
-  const playlistId = req.query.id
+//   res.status(200).send(result);
+// })
 
-  if(!playlistId) res.status(400).send("Não é possível realizar a operação. ID da playlista ausente")
+// app.get("/tracks", (req, res) => {
+//   const playlistId = req.query.id
 
-  const allPlaylists = users.map((user: any) => {
-    return user.playlists
-  }).flat(1)
+//   if(!playlistId) res.status(400).send("Não é possível realizar a operação. ID da playlista ausente")
 
-  let tracks;
+//   const allPlaylists = users.map((user: any) => {
+//     return user.playlists
+//   }).flat(1)
 
-  allPlaylists.forEach((playlist: any) => {
-    if (playlist.id === playlistId) {
-      tracks = playlist.tracks
-    }
-  })
+//   let tracks;
 
-  res.status(200).send(tracks)
-})
+//   allPlaylists.forEach((playlist: any) => {
+//     if (playlist.id === playlistId) {
+//       tracks = playlist.tracks
+//     }
+//   })
 
-app.delete("/playlist", (req, res) => {
-  const id = req.query.id
+//   res.status(200).send(tracks)
+// })
 
-  users.forEach((user: any) => {
-    user.playlists = user.playlists.map((playlist: any) => {
-      if (playlist.id === id) {
-        return {}
-      }
-      return playlist
-    });
-  })
+// app.delete("/playlist", (req, res) => {
+//   const id = req.query.id
 
-  res.status(200).send(users)
-})
+//   users.forEach((user: any) => {
+//     user.playlists = user.playlists.map((playlist: any) => {
+//       if (playlist.id === id) {
+//         return {}
+//       }
+//       return playlist
+//     });
+//   })
 
-app.delete("/track", (req, res) => {
-  const trackId = req.query.trackId
-  const playlistId = req.query.playlistId
+//   res.status(200).send(users)
+// })
 
-  const allPlaylists = users
-    .map((user: any) => {
-      return user.playlists;
-    })
-    .flat(1);
-  for (let i = 0; i <= allPlaylists.lenght; i++) {
-    allPlaylists[i]
-  }
+// app.delete("/track", (req, res) => {
+//   const trackId = req.query.trackId
+//   const playlistId = req.query.playlistId
 
-  for (let playlist of allPlaylists) {
-    playlist
-  }
+//   const allPlaylists = users
+//     .map((user: any) => {
+//       return user.playlists;
+//     })
+//     .flat(1);
+//   for (let i = 0; i <= allPlaylists.lenght; i++) {
+//     allPlaylists[i]
+//   }
 
-  allPlaylists.forEach((playlist: any) => {
-    if (playlist.id === playlistId) {
-       playlist.tracks = playlist.tracks.map((track: any) => {
-         if (track.id === trackId) {
-           return {};
-         }
-         return track;
-       });
-    }
-  })
+//   for (let playlist of allPlaylists) {
+//     playlist
+//   }
 
-  res.status(200).send(allPlaylists)
-})
+//   allPlaylists.forEach((playlist: any) => {
+//     if (playlist.id === playlistId) {
+//        playlist.tracks = playlist.tracks.map((track: any) => {
+//          if (track.id === trackId) {
+//            return {};
+//          }
+//          return track;
+//        });
+//     }
+//   })
+
+//   res.status(200).send(allPlaylists)
+// })
