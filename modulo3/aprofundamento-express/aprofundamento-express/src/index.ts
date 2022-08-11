@@ -6,6 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+type All = {
+  userId: Number;
+  id: Number;
+  title: String;
+  completed: Boolean;
+};
+
 app.get("/ping", (req, res) => {
   res.send("Pong! 🏓");
 });
