@@ -103,4 +103,41 @@ SELECT \* FROM Actor WHERE name LIKE "%G%" OR name LIKE "%g%";
 
 SELECT \* FROM Actor WHERE (name LIKE "%A%" OR name LIKE "%a%" OR "%G%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000;
 
-5
+<!-- 5 -->
+
+CREATE TABLE Films (
+id VARCHAR(255) PRIMARY KEY,
+name VARCHAR(255) NOT NULL UNIQUE,
+sinopse TEXT NOT NULL,
+release_date DATE NOT NULL,
+rating INT NOT NULL
+);
+5 a) A query consite em 5 colunas, as duas primeiras são id e nome que são dados unicos do tipo varchar, sinopse é um texto que precisa de mais caracteres, data do lançamento e por ultimo avaliação que é um numero inteiro.
+
+<!-- 5 b) -->
+INSERT INTO Films (id, name, sinopse, release_date, rating)
+VALUES("001", "Se Eu Fosse Você", "Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos", "2006-01-06", 7 );
+
+<!-- 5 c) -->
+INSERT INTO Films (id, name, sinopse, release_date, rating)
+VALUES("002", "Doce de mãe", "Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela", "2012-12-27", 10);
+
+<!-- 5 d) -->
+INSERT INTO Films (id, name, sinopse, release_date, rating)
+VALUES("003","Dona Flor e Seus Dois Maridos","Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.","2017-11-02-", 8);
+
+<!-- 5 e) -->
+INSERT INTO Films (id, name, sinopse, release_date, rating)
+VALUES("004", "Cidade de Deus", "Buscapé é um jovem pobre, negro e sensível, que cresce em um universo de muita violência. Ele vive na Cidade de Deus, favela carioca conhecida por ser um dos locais mais violentos do Rio. Amedrontado com a possibilidade de se tornar um bandido, Buscapé é salvo de seu destino por causa de seu talento como fotógrafo, o qual permite que siga carreira na profissão. É por meio de seu olhar atrás da câmera que ele analisa o dia a dia da favela em que vive, onde a violência aparenta ser infinita.","2002-08-30", 10);
+
+<!-- 6 a) -->
+SELECT id, name, rating FROM Films WHERE id = "001";
+
+<!-- 6 b)  -->
+SELECT \* FROM Films WHERE name = "Cidade de Deus";
+
+<!-- 6 c) -->
+SELECT id, name, sinopse FROM Films WHERE rating > 7;
+
+<!-- 7 a) -->
+SELECT * FROM Films WHERE name LIKE "%vida%";
