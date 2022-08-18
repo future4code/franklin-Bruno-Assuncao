@@ -42,7 +42,7 @@ WHERE id = "005";
 
 <!-- 2 d) -->
 
-Ele roda e não da erro, porém não atualiza nenhuma coluna
+Ele roda e não da erro, porém não atualiza nenhuma coluna, "nada foi afetado".
 
 <!-- 3 a) -->
 
@@ -87,3 +87,30 @@ SELECT \* FROM Actor ORDER BY salary DESC LIMIT 3;
 <!-- 5 e) -->
 
 SELECT AVG(salary), gender FROM Actor ORDER BY gender;
+
+<!-- 6 a) -->
+
+ALTER TABLE Films
+ADD playing_limit_date DATE;
+
+<!-- 6 b) -->
+
+ALTER TABLE Films
+CHANGE rating rating FLOAT;
+
+<!-- 6 c) -->
+
+UPDATE Films
+SET
+playing_limit_date = "2022-10-14"
+WHERE id = "003";
+
+UPDATE Films
+SET
+playing_limit_date = "2018-05-24"
+WHERE id = "002";
+
+<!-- 6 d) -->
+
+0 row(s) affected Rows matched: 0 Changed: 0 Warnings: 0
+A query rodou, porem nenhuma linha foi afetada
