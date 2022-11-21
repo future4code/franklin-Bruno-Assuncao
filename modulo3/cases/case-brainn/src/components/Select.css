@@ -1,0 +1,25 @@
+.Select {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 15%;
+  height: 5%;
+  border-radius: 5%;
+  border-style: none;
+  font-family: Montserrat;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .Select {
+    position: absolute;
+    top: 5%;
+    left: 35%;
+    width: 30%;
+    height: 5%;
+    border-radius: 5%;
+    border-style: none;
+    font-family: Montserrat;
+    font-weight: bold;
+  }
+}
